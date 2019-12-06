@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guess The Number Game</title>
+    <style>
+        html,body
+        {
+            background-color:blueviolet;
+            height:100%;
+        }
+        html
+        {
+            display:table;
+            margin:auto;
+        }
+        body{
+            display:table-cell;
+            vertical-align: middle;
+        }
+    .box [type="button"]
+    {
+        border:0;
+        display:none;
+        display:block;
+        margin:10px auto;
+        border:2px solid#3411db;
+        padding:12px 20px;
+        width:150px;
+        outline:none;
+        color:black;
+        border-radius:24px;
+    }
+    </style>
+
+    </style>
+    <script>
+        function f1()
+        {
+            x=Math.random()
+            x=x*50
+            x=parseInt(x)
+            console.log(x)
+            let count=4;
+            while(input!=x)
+            {
+                
+                var input=prompt("Take a guess",'')
+                console.log(input)
+                count--;
+                if(input==undefined || input=='')
+                {
+                    alert("Please enter a number")
+                    count++;
+                }
+                else if(input==x)
+                {
+                    document.getElementsByClassName('secondpage')[0].getElementsByClassName("head")[0].innerText="Congratulation That's the right guess";
+                    break;
+                }
+                else if(count==0)
+                {
+                    document.getElementsByClassName('secondpage')[0].getElementsByClassName("head")[0].innerText="Sorry You have Lost the Game!! :(";
+                    break;
+                }
+                else if(x>input)
+                {
+                    alert("The number is Greater than your current Guess ;)")
+                }
+                else if(x<input)
+                {
+                    alert("The number is less than your current Guess ;)")
+                }
+                
+                alert("Number of chances left is-->"+count)
+                
+            }
+
+            
+        }
+        function f2()
+        {
+            y=Math.random()
+            y=y*100
+            y=parseInt(y)
+            console.log(y)
+            let count=8;
+            while(input!=y)
+            {
+                
+                var input=prompt("Take a guess",'')
+                console.log(input)
+                count--;
+                if(input==y)
+                {
+                    document.getElementsByClassName('secondpage')[0].getElementsByClassName("head")[0].innerText="Congratulation That's the right guess";
+                    break;
+                }
+                else if(input==undefined || input=='')
+                {
+                    alert("Please enter a number")
+                    count++
+                }
+                
+                else if(y>input)
+                {
+                    alert("The number is Greater than your current Guess ;)")
+                }
+                else if(y<input)
+                {
+                    alert("The number is less than your current Guess ;)")
+                }
+                if(count==0)
+                {
+                    document.getElementsByClassName('secondpage')[0].getElementsByClassName("head")[0].innerText="Sorry You have Lost the Game!! :(";
+                    break;
+                }
+                alert("Number of chances left is-->"+count)
+                
+            }
+
+
+        }
+        
+        function change(f)
+        {
+            let main_page=document.getElementsByClassName('main')[0]
+            let second_page=document.getElementsByClassName('secondpage')[0]
+            switch(f)
+            {
+            case 'secondpage':
+            main_page.style.display='none';
+            second_page.style.display='inline-block'
+            break;
+            case 'Main':
+            main_page.style.display='inline-block';
+            second_page.style.display='none'
+        }
+        }
+        /*button.addEventListener('click',function() {change('secondpage');})*/
+    </script>
+</head>
+<body>
+    <div class="main">
+        <h1 align="center">Welcome To Guess The Number Game</h1>
+        <form align=center class="box">
+        <p style="font-size:30px;">Please select the range</p>
+        <input type=button value="0-50" onclick="f1(),change('secondpage')">
+        <input type=button value="0-100" onclick="f2(),change('secondpage')">
+        </form>
+    </div>
+    <div class="secondpage" style="display:none;">
+        <h1 align="center" class="head"></h1>
+        <form align=center class="second">
+        </form>
+        <p class="chances">Do You want to play again?</p>
+        <input type="button" value="YES" onclick="change('Main')">
+        <input type="button" value="NO" onclick="window.close()">
+    </div>
+    
+</body>
+</html>
